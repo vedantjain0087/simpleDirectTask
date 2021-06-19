@@ -1,4 +1,5 @@
 const express = require('express')
+const cron = require('node-cron')
 const app = express()
 const router = express.Router()
 const port = process.env.PORT || 3000
@@ -11,6 +12,11 @@ try {
     console.log("There was some error in connecting the Database", e)
 }
 app.use(router)
+const syncDatabase = require("./cron/index")
+cron.schedule('*/30 * * * *', () => {
+    console.log('Syncing Database with SWAPI');
+    syncDatabase()
+});
 
 require("./models/index")
 
