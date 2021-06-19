@@ -1,37 +1,57 @@
 const { DataTypes, Model, Sequelize } = require('sequelize')
 const dbConnection = require('../config/dbConfig')
 
-class Film extends Model {}
+class Vehicle extends Model {}
 
-Film.init(
+Vehicle.init(
     {
-        filmId: {
+        vehicleId: {
             type: DataTypes.BIGINT,
-            primaryKey: true,
-            unique: true
+            autoIncrement: true,
+            primaryKey: true
         },
-        title: {
+        name: {
             type: DataTypes.STRING(),
             allowNull: false
         },
-        episode_id: {
-            type: DataTypes.BIGINT(),
-            allowNull: false
-        },
-        opening_crawl: {
+        model: {
             type: DataTypes.STRING(),
             allowNull: true
         },
-        director: {
+        manufacturer: {
             type: DataTypes.STRING(),
             allowNull: true
         },
-        producer: {
+        cost_in_credits: {
             type: DataTypes.STRING(),
             allowNull: true
         },
-        release_date: {
-            type: DataTypes.DATE(),
+        length: {
+            type: DataTypes.STRING(),
+            allowNull: true
+        },
+        max_atmosphering_speed: {
+            type: DataTypes.STRING(),
+            allowNull: true
+        },
+        crew: {
+            type: DataTypes.STRING(),
+            allowNull: true
+        },
+        passengers: {
+            type: DataTypes.STRING(),
+            allowNull: true
+        },
+        cargo_capacity: {
+            type: DataTypes.STRING(),
+            allowNull: true
+        },
+        consumables: {
+            type: DataTypes.STRING(),
+            allowNull: true
+        },
+        vehicle_class: {
+            type: DataTypes.STRING(),
             allowNull: true
         },
         created: {
@@ -49,19 +69,18 @@ Film.init(
     },
     {
         sequelize: dbConnection, // We need to pass the connection instance
-        modelName: 'Film', // We need to choose the model name)
-        tableName: 'films',
+        modelName: 'Vehicle', // We need to choose the model name)
+        tableName: 'vehicles',
         createdAt: false,
         updatedAt: false
     }
 );
-
 (async () => {
     try {
-      await Film.sync({})
+      await Vehicle.sync({})
     } catch (error) {
       console.log(error)
     }
 })()
 
-module.exports = Film
+module.exports = Vehicle

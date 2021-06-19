@@ -1,37 +1,49 @@
 const { DataTypes, Model, Sequelize } = require('sequelize')
 const dbConnection = require('../config/dbConfig')
 
-class Film extends Model {}
+class Planet extends Model {}
 
-Film.init(
+Planet.init(
     {
-        filmId: {
+        planetId: {
             type: DataTypes.BIGINT,
-            primaryKey: true,
-            unique: true
+            autoIncrement: true,
+            primaryKey: true
         },
-        title: {
+        name: {
             type: DataTypes.STRING(),
             allowNull: false
         },
-        episode_id: {
-            type: DataTypes.BIGINT(),
-            allowNull: false
-        },
-        opening_crawl: {
+        rotation_period: {
             type: DataTypes.STRING(),
             allowNull: true
         },
-        director: {
+        orbital_period: {
             type: DataTypes.STRING(),
             allowNull: true
         },
-        producer: {
+        diameter: {
             type: DataTypes.STRING(),
             allowNull: true
         },
-        release_date: {
-            type: DataTypes.DATE(),
+        climate: {
+            type: DataTypes.STRING(),
+            allowNull: true
+        },
+        gravity: {
+            type: DataTypes.STRING(),
+            allowNull: true
+        },
+        terrain: {
+            type: DataTypes.STRING(),
+            allowNull: true
+        },
+        surface_water: {
+            type: DataTypes.STRING(),
+            allowNull: true
+        },
+        population: {
+            type: DataTypes.STRING(),
             allowNull: true
         },
         created: {
@@ -49,19 +61,18 @@ Film.init(
     },
     {
         sequelize: dbConnection, // We need to pass the connection instance
-        modelName: 'Film', // We need to choose the model name)
-        tableName: 'films',
+        modelName: 'Planet', // We need to choose the model name)
+        tableName: 'planets',
         createdAt: false,
         updatedAt: false
     }
 );
-
 (async () => {
     try {
-      await Film.sync({})
+      await Planet.sync({})
     } catch (error) {
       console.log(error)
     }
 })()
 
-module.exports = Film
+module.exports = Planet

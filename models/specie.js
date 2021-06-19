@@ -1,37 +1,46 @@
 const { DataTypes, Model, Sequelize } = require('sequelize')
 const dbConnection = require('../config/dbConfig')
+const Planet = require("./planet")
 
-class Film extends Model {}
+class Specie extends Model {}
 
-Film.init(
+Specie.init(
     {
-        filmId: {
+        specieId: {
             type: DataTypes.BIGINT,
-            primaryKey: true,
-            unique: true
+            autoIncrement: true,
+            primaryKey: true
         },
-        title: {
+        name: {
             type: DataTypes.STRING(),
             allowNull: false
         },
-        episode_id: {
-            type: DataTypes.BIGINT(),
-            allowNull: false
-        },
-        opening_crawl: {
+        designation: {
             type: DataTypes.STRING(),
             allowNull: true
         },
-        director: {
+        average_height: {
             type: DataTypes.STRING(),
             allowNull: true
         },
-        producer: {
+        skin_colors: {
             type: DataTypes.STRING(),
             allowNull: true
         },
-        release_date: {
-            type: DataTypes.DATE(),
+        hair_colors: {
+            type: DataTypes.STRING(),
+            allowNull: true
+        },
+        eye_colors: {
+            type: DataTypes.STRING(),
+            allowNull: true
+        },
+        average_lifespan: {
+            type: DataTypes.STRING(),
+            allowNull: true
+        },
+        language: {
+            type: DataTypes.STRING(),
             allowNull: true
         },
         created: {
@@ -49,19 +58,24 @@ Film.init(
     },
     {
         sequelize: dbConnection, // We need to pass the connection instance
-        modelName: 'Film', // We need to choose the model name)
-        tableName: 'films',
+        modelName: 'Specie', // We need to choose the model name)
+        tableName: 'species',
         createdAt: false,
         updatedAt: false
     }
 );
-
+Planet.hasMany(Specie, {
+    foreignKey: {
+        name: 'planetId',
+        allowNull: false
+    },
+});
 (async () => {
     try {
-      await Film.sync({})
+      await Specie.sync({})
     } catch (error) {
       console.log(error)
     }
 })()
 
-module.exports = Film
+module.exports = Specie

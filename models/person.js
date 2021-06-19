@@ -1,37 +1,50 @@
 const { DataTypes, Model, Sequelize } = require('sequelize')
 const dbConnection = require('../config/dbConfig')
+const Planet = require("./planet")
+class Person extends Model {}
 
-class Film extends Model {}
 
-Film.init(
+Person.init(
     {
-        filmId: {
+        peopleId: {
             type: DataTypes.BIGINT,
-            primaryKey: true,
-            unique: true
+            autoIncrement: true,
+            primaryKey: true
         },
-        title: {
+        name: {
             type: DataTypes.STRING(),
             allowNull: false
         },
-        episode_id: {
-            type: DataTypes.BIGINT(),
-            allowNull: false
-        },
-        opening_crawl: {
+        height: {
             type: DataTypes.STRING(),
             allowNull: true
         },
-        director: {
+        mass: {
             type: DataTypes.STRING(),
             allowNull: true
         },
-        producer: {
+        hair_color: {
             type: DataTypes.STRING(),
             allowNull: true
         },
-        release_date: {
-            type: DataTypes.DATE(),
+        skin_color: {
+            type: DataTypes.STRING(),
+            allowNull: true
+        },
+        eye_color: {
+            type: DataTypes.STRING(),
+            allowNull: true
+        },
+        birth_year: {
+            type: DataTypes.STRING(),
+            allowNull: true
+        },
+        gender: {
+            type: DataTypes.STRING(),
+            allowNull: true
+        },
+        gender: {
+            type: DataTypes.STRING(),
             allowNull: true
         },
         created: {
@@ -49,19 +62,26 @@ Film.init(
     },
     {
         sequelize: dbConnection, // We need to pass the connection instance
-        modelName: 'Film', // We need to choose the model name)
-        tableName: 'films',
+        modelName: 'Person', // We need to choose the model name)
+        tableName: 'people',
         createdAt: false,
         updatedAt: false
     }
 );
 
+Planet.hasMany(Person, {
+    foreignKey: {
+        name: 'planetId',
+        allowNull: false
+    },
+});
+
 (async () => {
     try {
-      await Film.sync({})
+      await Person.sync({})
     } catch (error) {
       console.log(error)
     }
 })()
 
-module.exports = Film
+module.exports = Person
