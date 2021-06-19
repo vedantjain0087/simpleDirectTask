@@ -11,6 +11,8 @@ try {
     console.log("There was some error in connecting the Database", e)
 }
 
+require("./models/index")
+
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
