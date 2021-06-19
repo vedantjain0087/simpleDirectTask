@@ -7,7 +7,6 @@ Starship.init(
     {
         starShipId: {
             type: DataTypes.BIGINT,
-            autoIncrement: true,
             primaryKey: true
         },
         name: {

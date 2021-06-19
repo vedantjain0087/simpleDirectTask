@@ -1,4 +1,5 @@
 const instance = require("../config/axiosConfig")
+const syncDb = require("../dao/index")
 
 const getTotalPages = (totalResults, pageLimit) => {
     let totalPages = parseInt(totalResults/pageLimit)
@@ -37,6 +38,7 @@ const insertData = async (req, res) => {
             res.status(e.response.status).json({data: [], message: `There was some error while fetching ${item}`})
         }
     }
+    await syncDb(data)
     res.json({data: data})
 }
 

@@ -8,7 +8,6 @@ Person.init(
     {
         peopleId: {
             type: DataTypes.BIGINT,
-            autoIncrement: true,
             primaryKey: true
         },
         name: {
@@ -43,10 +42,6 @@ Person.init(
             type: DataTypes.STRING(),
             allowNull: true
         },
-        gender: {
-            type: DataTypes.STRING(),
-            allowNull: true
-        },
         created: {
             type: DataTypes.DATE(),
             allowNull: true
@@ -58,6 +53,13 @@ Person.init(
         url: {
             type: DataTypes.STRING(),
             allowNull: false
+        },
+        planetId: {
+            type: DataTypes.BIGINT,
+            references: {
+                model: Planet,
+                key: 'planetId'
+            }
         }
     },
     {
@@ -68,13 +70,6 @@ Person.init(
         updatedAt: false
     }
 );
-
-Planet.hasMany(Person, {
-    foreignKey: {
-        name: 'planetId',
-        allowNull: false
-    },
-});
 
 (async () => {
     try {

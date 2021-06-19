@@ -7,7 +7,6 @@ Planet.init(
     {
         planetId: {
             type: DataTypes.BIGINT,
-            autoIncrement: true,
             primaryKey: true
         },
         name: {

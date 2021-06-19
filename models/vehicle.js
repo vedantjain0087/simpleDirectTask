@@ -7,7 +7,6 @@ Vehicle.init(
     {
         vehicleId: {
             type: DataTypes.BIGINT,
-            autoIncrement: true,
             primaryKey: true
         },
         name: {

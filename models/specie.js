@@ -8,7 +8,6 @@ Specie.init(
     {
         specieId: {
             type: DataTypes.BIGINT,
-            autoIncrement: true,
             primaryKey: true
         },
         name: {
@@ -54,6 +53,13 @@ Specie.init(
         url: {
             type: DataTypes.STRING(),
             allowNull: false
+        },
+        planetId: {
+            type: DataTypes.BIGINT,
+            references: {
+                model: Planet,
+                key: 'planetId'
+            }
         }
     },
     {
@@ -64,12 +70,6 @@ Specie.init(
         updatedAt: false
     }
 );
-Planet.hasMany(Specie, {
-    foreignKey: {
-        name: 'planetId',
-        allowNull: false
-    },
-});
 (async () => {
     try {
       await Specie.sync({})
