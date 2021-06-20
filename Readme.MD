@@ -39,17 +39,12 @@ To get a local copy up and running follow these simple steps.
     ```sh
     npm start
     ```
-<!-- USAGE EXAMPLES -->
 ## About the CRON Job
 This project uses [node-cron](https://www.npmjs.com/package/node-cron) to create and schedule CRON JOBS. This job is scheduled to Sync DB every 30 mins
-
-<!-- ROADMAP -->
 ## Database
 
 * The Database dialect is `MYSQL` hosted on [Heroku - Clear MySQL](https://devcenter.heroku.com/articles/cleardb)
 * To understand the underlying schema, you can check the `models` folder in the root directory
-
-<!-- CONTRIBUTING -->
 ## Abou the API
 
 The baseUrl of the API is https://test-app-vedant.herokuapp.com/. The overall design of the API is
@@ -62,6 +57,16 @@ The baseUrl of the API is https://test-app-vedant.herokuapp.com/. The overall de
 
 * **SORT_TYPE**: This can be either `asc` or `desc`.
 
+## Test Cases
+This project uses [Jest](https://www.npmjs.com/package/jest) and [SuperTest](https://www.npmjs.com/package/supertest) to write test cases and execute them.
+1. To run the test cases
+    ```sh
+    npm run test
+    ```
+2. To run test cases ang get coverage report
+    ```
+    npm run test-report
+    ```
 <!-- CONTACT -->
 ## Contact
 
