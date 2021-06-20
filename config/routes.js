@@ -2,7 +2,7 @@ const queryDao = require("../dao/queryDao")
 const { FILMS, PLANETS, SPECIES, PEOPLE, VEHICLES, STRASHIPS } = require("../constants")
 
 const welcome = async (req, res) => {
-    res.send("Hello!")
+    res.send("Welcome to SWAPI Crawler!!")
 }
 
 const queryByLiteral = async (req, res) => {

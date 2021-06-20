@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "cross-env NODE_ENV=test jest --runInBand --testTimeout=10000 --detectOpenHandles"
+    "test": "cross-env NODE_ENV=test jest --runInBand --testTimeout=10000 --detectOpenHandles",
+    "test-report": "npx jest --coverage"
   },
   "repository": {
     "type": "git",
