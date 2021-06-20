@@ -1,5 +1,6 @@
 const instance = require("../config/axiosConfig")
-const syncDb = require("../dao/index")
+const syncDb = require("../dao/syncDb")
+const { FILMS, PLANETS, SPECIES, PEOPLE, VEHICLES, STRASHIPS } = require("../constants")
 
 const getTotalPages = (totalResults, pageLimit) => {
     let totalPages = parseInt(totalResults/pageLimit)
@@ -21,7 +22,7 @@ const getAndStoreResultsByPage = async (data, totalPages, key, url) => {
 const syncDatabase = async () => {
     let data = {}
     const pageLimit = 10
-    const entities = ['films', 'planets', 'species', 'people', 'vehicles', 'starships']
+    const entities = [FILMS, PLANETS, SPECIES, PEOPLE, VEHICLES, STRASHIPS]
     for (let j = 0; j < entities.length; j++) {
         const item = entities[j]
         try {
@@ -38,7 +39,11 @@ const syncDatabase = async () => {
             res.status(e.response.status).json({data: [], message: `There was some error while fetching ${item}`})
         }
     }
-    await syncDb(data)
+    try {
+        await syncDb(data)
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 module.exports = syncDatabase

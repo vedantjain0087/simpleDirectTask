@@ -12,7 +12,7 @@ try {
     console.log("There was some error in connecting the Database", e)
 }
 app.use(router)
-const syncDatabase = require("./cron/index")
+const syncDatabase = require("./cron")
 cron.schedule('*/30 * * * *', () => {
     console.log('Syncing Database with SWAPI');
     syncDatabase()
