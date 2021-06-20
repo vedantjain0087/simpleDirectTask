@@ -57,7 +57,6 @@ The baseUrl of the API is https://test-app-vedant.herokuapp.com/. The overall de
 `https://test-app-vedant.herokuapp.com//query/<ENTITY>/?search=<YOUR_SEARCH_TEXT>&sort=<SORT_TYPE>`
 
 * **ENTITY**: It can be one of the following [films, planets, species, people, vehicles, starships]
-<br>
 
 * **SEARCH_TEXT** : This can be your search value or keyword by which you want to search an entity
 
