@@ -49,7 +49,7 @@ This project uses [node-cron](https://www.npmjs.com/package/node-cron) to create
 
 The baseUrl of the API is https://test-app-vedant.herokuapp.com/. The overall design of the API is
 <br>
-`https://test-app-vedant.herokuapp.com//query/<ENTITY>/?search=<YOUR_SEARCH_TEXT>&sort=<SORT_TYPE>`
+`https://test-app-vedant.herokuapp.com/query/<ENTITY>/?search=<YOUR_SEARCH_TEXT>&sort=<SORT_TYPE>`
 
 * **ENTITY**: It can be one of the following [films, planets, species, people, vehicles, starships]
 
